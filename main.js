@@ -36,7 +36,6 @@ function getHumanChoice() {
 
 //Logic to play a single round
 function playRound(humanChoice, computerChoice) {
-  console.log(humanScore);
   if (humanChoice == "Rock" && computerChoice == "Rock") {
     console.log(`COMPUTER CHOICE: ${computerChoice}`);
     console.log(`YOUR CHOICE: ${humanChoice}`);
@@ -84,9 +83,26 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-playRound(getHumanChoice(), getComputerChoice());
+//Logic to play the entire game
+function playGame(playRound, getHumanChoice, getComputerChoice) {
+  for (let i = 1; i <= 5; i++) {
+    console.log(`THIS IS ROUND = ${i}`);
+    playRound(getHumanChoice(), getComputerChoice());
+  }
 
-// function test() {
-//   console.log(`HUMAN SCORE: ${humanScore}`);
-//   console.log(`COMPUTER SCORE: ${computerScore}`);
-// }
+  console.log(`HUMAN SCORE: ${humanScore}`);
+  console.log(`COMPUTER SCORE: ${computerScore}`);
+
+  if (humanScore > computerScore) {
+    console.log("You Won");
+    return "You won";
+  } else if (computerScore > humanScore) {
+    console.log("The computer Won");
+    return "The computer won";
+  } else {
+    console.log("It is a tie!");
+    return "It is a tie!";
+  }
+}
+
+playGame(playRound, getHumanChoice, getComputerChoice);
